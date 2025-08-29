@@ -7,3 +7,11 @@ requires-python = ">=3.12"
 dependencies = [
     "gradio-client>=1.12.1",
 ]
+python = "^3.11"           # or "^3.12" to match your app setting
+streamlit = "*"
+pandas = "*"
+numpy = "*"
+plotly = ">=5.20"
+google-generativeai = ">=0.7.0"
+python-dateutil = "*"
+requests = "*"
