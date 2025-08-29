@@ -47,3 +47,22 @@ def st_plotly_chart_safe(fig, **kwargs):
         return
     st.plotly_chart(fig, use_container_width=True, **kwargs)
 
+# --- Back-compat shim for older imports --------------------------------------
+def get_forecast(days: int = 30):
+    """
+    Backwards-compatible wrapper so code that does
+        from core.analytics import get_forecast
+    keeps working.
+
+    Returns: (forecast_obj: dict, metrics: dict)
+    """
+    try:
+        from ui.forecast import compute_forecast
+        return compute_forecast(days=days)
+    except Exception as e:
+        import streamlit as st
+        st.warning(f"Forecast unavailable: {e}")
+        # Minimal safe fallback shape
+        return {"empty": True}, {"period_days": days}
+
+
