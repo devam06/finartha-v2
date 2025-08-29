@@ -1,4 +1,5 @@
 streamlit
+plotly>=5.20
 gradio-client
 pandas
 numpy
